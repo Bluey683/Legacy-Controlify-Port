@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.bluey683.legacycontrolify.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": ["MinecraftClientMixin"],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
