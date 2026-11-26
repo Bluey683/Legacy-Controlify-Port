@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "legacy_controlify_port",
+  "version": "${version}",
+  "name": "Legacy Controlify Port",
+  "description": "An experimental gamepad support port for Minecraft 1.14.2.",
+  "authors": ["Bluey683"],
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.bluey683.legacycontrolify.LegacyControlifyClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.25",
+    "minecraft": "1.14.2",
+    "java": ">=8"
+  }
+}
