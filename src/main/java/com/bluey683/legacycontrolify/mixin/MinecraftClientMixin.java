@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 public abstract class MinecraftClientMixin {
     private boolean legacyControlify$f8WasDown;
+    private boolean legacyControlify$f7WasDown;
 
     @Inject(method = "tick()V", at = @At("TAIL"))
     private void legacyControlify$pollGamepad(CallbackInfo ci) {
@@ -23,5 +24,11 @@ public abstract class MinecraftClientMixin {
             ControlifyConfigScreen.open();
         }
         legacyControlify$f8WasDown = f8Down;
+
+        boolean f7Down = GLFW.glfwGetKey(client.getWindow().getHandle(), GLFW.GLFW_KEY_F7) == GLFW.GLFW_PRESS;
+        if (f7Down && !legacyControlify$f7WasDown && client.currentScreen == null) {
+            client.openScreen(new com.bluey683.legacycontrolify.RadialMenuScreen());
+        }
+        legacyControlify$f7WasDown = f7Down;
     }
 }
