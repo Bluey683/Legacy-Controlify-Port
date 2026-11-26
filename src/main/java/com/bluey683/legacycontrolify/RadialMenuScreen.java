@@ -25,17 +25,17 @@ public final class RadialMenuScreen extends Screen {
         this.renderBackground(matrices);
         int cx = this.width / 2;
         int cy = this.height / 2;
-        drawCenteredString(matrices, this.textRenderer, "RADIAL MENU", cx, cy - 12, 0xFFFFFF);
+        drawCenteredString(matrices, this.textRenderer, new LiteralText("RADIAL MENU"), cx, cy - 12, 0xFFFFFF);
         int radius = 78;
         for (int i = 0; i < ITEMS.length; i++) {
             double angle = -Math.PI / 2.0 + (Math.PI * 2.0 * i / ITEMS.length);
             int x = cx + (int) (Math.cos(angle) * radius);
             int y = cy + (int) (Math.sin(angle) * radius);
             int color = i == selected ? 0xFFFF55 : 0xFFFFFF;
-            drawCenteredString(matrices, this.textRenderer, ITEMS[i], x, y, color);
+            drawCenteredString(matrices, this.textRenderer, new LiteralText(ITEMS[i]), x, y, color);
         }
         drawCenteredString(matrices, this.textRenderer,
-            "Use D-pad / arrows to select, Enter to confirm, Esc to close",
+            new LiteralText("Use arrows to select, Enter to confirm, Esc to close"),
             cx, cy + 105, 0xAAAAAA);
         super.render(matrices, mouseX, mouseY, delta);
     }
