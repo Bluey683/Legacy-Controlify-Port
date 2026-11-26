@@ -12,6 +12,7 @@ public final class ControlifyConfig {
     public static int deadzone = 18;
     public static boolean controllerEnabled = true;
     public static boolean invertLookY = false;
+    public static boolean vibrationEnabled = true;
     private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("legacy-controlify.properties");
 
     private ControlifyConfig() {
@@ -28,6 +29,7 @@ public final class ControlifyConfig {
             deadzone = clamp(parseInt(properties.getProperty("deadzone"), 18), 0, 50);
             controllerEnabled = Boolean.parseBoolean(properties.getProperty("controllerEnabled", "true"));
             invertLookY = Boolean.parseBoolean(properties.getProperty("invertLookY", "false"));
+            vibrationEnabled = Boolean.parseBoolean(properties.getProperty("vibrationEnabled", "true"));
         } catch (IOException exception) {
             System.err.println("[Legacy Controlify Port] Could not load config: " + exception.getMessage());
         }
@@ -38,6 +40,7 @@ public final class ControlifyConfig {
         properties.setProperty("deadzone", Integer.toString(clamp(deadzone, 0, 50)));
         properties.setProperty("controllerEnabled", Boolean.toString(controllerEnabled));
         properties.setProperty("invertLookY", Boolean.toString(invertLookY));
+        properties.setProperty("vibrationEnabled", Boolean.toString(vibrationEnabled));
         try {
             Files.createDirectories(FILE.getParent());
             try (OutputStream output = Files.newOutputStream(FILE)) {
