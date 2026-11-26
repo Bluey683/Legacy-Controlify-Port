@@ -16,7 +16,7 @@ public abstract class MinecraftClientMixin {
     private boolean legacyControlify$f8WasDown;
     private boolean legacyControlify$f7WasDown;
     private boolean legacyControlify$f6WasDown;
-    private boolean legacyControlify$f5WasDown;
+    private boolean legacyControlify$f4WasDown;
 
     @Inject(method = "tick()V", at = @At("TAIL"))
     private void legacyControlify$pollGamepad(CallbackInfo ci) {
@@ -43,7 +43,7 @@ public abstract class MinecraftClientMixin {
         }
         legacyControlify$f6WasDown = f6Down;
 
-        boolean f5Down = GLFW.glfwGetKey(client.getWindow().getHandle(), GLFW.GLFW_KEY_F5) == GLFW.GLFW_PRESS;
+        boolean f5Down = GLFW.glfwGetKey(client.getWindow().getHandle(), GLFW.GLFW_KEY_F4) == GLFW.GLFW_PRESS;
         if (f5Down && !legacyControlify$f5WasDown) VirtualMouse.toggle();
         legacyControlify$f5WasDown = f5Down;
     }
