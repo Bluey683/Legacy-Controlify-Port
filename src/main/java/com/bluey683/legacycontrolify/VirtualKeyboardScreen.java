@@ -3,7 +3,6 @@ package com.bluey683.legacycontrolify;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
 
 /** Controller-friendly on-screen keyboard for entering text and sending chat. */
@@ -76,12 +75,11 @@ public final class VirtualKeyboardScreen extends Screen {
     }
 
     @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        this.renderBackground(matrices);
-        drawCenteredString(matrices, this.textRenderer, new LiteralText("VIRTUAL KEYBOARD"),
-            this.width / 2, 15, 0xFFFFFF);
-        if (textField != null) textField.render(matrices, mouseX, mouseY, delta);
-        super.render(matrices, mouseX, mouseY, delta);
+    public void render(int mouseX, int mouseY, float delta) {
+        this.renderBackground();
+        drawCenteredString(this.textRenderer, "VIRTUAL KEYBOARD", this.width / 2, 15, 0xFFFFFF);
+        if (textField != null) textField.render(mouseX, mouseY, delta);
+        super.render(mouseX, mouseY, delta);
     }
 
     @Override
