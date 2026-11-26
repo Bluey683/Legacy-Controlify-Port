@@ -37,6 +37,12 @@ public final class ControlifyConfigScreen {
                 .setSaveConsumer(value -> ControlifyConfig.invertLookY = value)
                 .build());
 
+        controller.addEntry(entries.startBooleanToggle(
+                new LiteralText("Enable vibration (requires supported backend)"), ControlifyConfig.vibrationEnabled)
+                .setDefaultValue(true)
+                .setSaveConsumer(value -> ControlifyConfig.vibrationEnabled = value)
+                .build());
+
         builder.setSavingRunnable(ControlifyConfig::save);
         return builder.build();
     }
