@@ -3,15 +3,14 @@
   "id": "legacy_controlify_port",
   "version": "${version}",
   "name": "Legacy Controlify Port",
-  "description": "An experimental gamepad support port for Minecraft 1.14.2.",
+  "description": "Experimental GLFW gamepad detection for Minecraft 1.14.2.",
   "authors": ["Bluey683"],
   "license": "All-Rights-Reserved",
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "com.bluey683.legacycontrolify.LegacyControlifyClient"
-    ]
+    "client": ["com.bluey683.legacycontrolify.LegacyControlifyClient"]
   },
+  "mixins": ["legacy_controlify_port.mixins.json"],
   "depends": {
     "fabricloader": ">=0.14.25",
     "minecraft": "1.14.2",
