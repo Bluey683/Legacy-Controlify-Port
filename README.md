@@ -21,7 +21,7 @@ Experimental Fabric port for Minecraft 1.14.2.
 
 Press **F8** to open the controller settings screen. The GUI is built with Cloth Config. The current input backend is still GLFW; LibSDL4J is included as a dependency but has not yet replaced the GLFW polling backend.
 
-## Build
+## Experimental additions\n\n- Eight-slot radial selector opened with **F7**; navigate with arrow keys and confirm with Enter. Entries are currently visual placeholders and are not yet bound to Minecraft actions.\n- Vibration setting is present in Cloth Config. Actual rumble is **not available yet**: the current GLFW polling backend has no rumble output, and the SDL3 haptics backend remains to be implemented and tested. `VibrationManager.isSupported()` therefore returns `false`.\n\n## Build
 
 The GitHub Actions workflow uses Temurin Java 21 and Gradle 8.7:
 
