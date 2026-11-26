@@ -4,9 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 
 /**
  * Bootstrap for the experimental Minecraft 1.14.2 port.
- *
- * Gamepad polling and input bindings still need to be implemented against
- * the exact GLFW/LWJGL version bundled by Minecraft 1.14.2.
+ * Controller discovery and input bindings are not implemented yet.
  */
 public final class LegacyControlifyClient implements ClientModInitializer {
     @Override
