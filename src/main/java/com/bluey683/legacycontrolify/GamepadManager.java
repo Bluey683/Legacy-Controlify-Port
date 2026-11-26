@@ -9,7 +9,6 @@ import org.lwjgl.glfw.GLFW;
  * implementation intentionally polls the first connected controller.
  */
 public final class GamepadManager {
-    private static final int DEADZONE = 18;
     private static boolean connected;
     private static String name = "No controller";
     private static float leftX;
@@ -22,6 +21,13 @@ public final class GamepadManager {
     }
 
     public static void poll() {
+        if (!ControlifyConfig.controllerEnabled) {
+            connected = false;
+            name = "Controller disabled";
+            leftX = leftY = rightX = rightY = 0.0F;
+            buttons = new boolean[32];
+            return;
+        }
         int joystick = findController();
         if (joystick == -1) {
             connected = false;
@@ -40,7 +46,7 @@ public final class GamepadManager {
             leftX = axis(axes, 0);
             leftY = -axis(axes, 1);
             rightX = axis(axes, 2);
-            rightY = -axis(axes, 3);
+            rightY = axis(axes, 3) * (ControlifyConfig.invertLookY ? 1.0F : -1.0F);
         } else {
             leftX = leftY = rightX = rightY = 0.0F;
         }
@@ -69,7 +75,7 @@ public final class GamepadManager {
             return 0.0F;
         }
         float value = axes.get(index);
-        return Math.abs(value) < (DEADZONE / 100.0F) ? 0.0F : clamp(value);
+        return Math.abs(value) < (ControlifyConfig.deadzone / 100.0F) ? 0.0F : clamp(value);
     }
 
     private static float clamp(float value) {
